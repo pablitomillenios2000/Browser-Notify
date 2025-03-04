@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"          # Web framework for serving the app
-py-vapid = "*"       # For generating VAPID keys
-pywebpush = "*"      # For sending web push notifications
+flask = "3.0.3"      # Latest stable Flask version as of mid-2024
+py-vapid = "1.9.0"   # Latest py-vapid version as of late 2023, stable for push
+pywebpush = "2.0.0"  # Latest pywebpush version as of mid-2024
 
 [dev-packages]
-# Add any development-specific packages here (e.g., testing tools) if needed
+# Add development tools here if needed (e.g., pytest = "7.4.0")
 
 [requires]
-python_version = "3.8"  # Adjust based on your preferred Python version
+python_version = "3.10"  # Updated to a modern, widely supported version
