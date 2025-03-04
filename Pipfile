@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"          # Web framework for serving the app
+py-vapid = "*"       # For generating VAPID keys
+pywebpush = "*"      # For sending web push notifications
+
+[dev-packages]
+# Add any development-specific packages here (e.g., testing tools) if needed
+
+[requires]
+python_version = "3.8"  # Adjust based on your preferred Python version
