@@ -17,13 +17,13 @@ public_key_bytes = vapid.public_key.public_bytes(
     format=serialization.PublicFormat.UncompressedPoint
 )
 raw_public_key = urlsafe_b64encode(public_key_bytes).decode('utf-8').rstrip('=')
-VAPID_PUBLIC_KEY = raw_public_key
-VAPID_PRIVATE_KEY = vapid.private_pem().decode()
+#VAPID_PUBLIC_KEY = raw_public_key
+#VAPID_PRIVATE_KEY = vapid.private_pem().decode()
 
 # After running once, hardcode these values and comment out the generation above
 # Example:
-# VAPID_PUBLIC_KEY = "BIw4Z3gKTVh9zG5gJ5gXz5xJ9T8z9xJ5gXz5xJ9T8z9xJ5gXz5xJ9T8z9xJ5gXz5xJ9T8"
-# VAPID_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgP8g...\n-----END PRIVATE KEY-----"
+VAPID_PUBLIC_KEY = "BOKD7KPCgfyN17IosT_mBPDPY4hGtbIxPxtePg6oid91V9jsTrsLWl_V0CeV1jD-t94YUy2w_rNWJqbX7Z0qEh8"
+VAPID_PRIVATE_KEY = "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgNlTgkzkvF4uyoC1OsceUoznrKF13h+xen5+4F/CW2eihRANCAASn9bwtD3ILwihPpyvSD0tjNl2IQbWDDjnUKyPaf8ObnUHMqO/BHibC9r8TCGTPppN4FA9A+ebedg6PjJO+ALNF"
 
 # Print for verification (remove after hardcoding)
 print("Raw VAPID Public Key:", VAPID_PUBLIC_KEY)
