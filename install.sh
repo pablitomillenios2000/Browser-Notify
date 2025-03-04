@@ -1,0 +1,1 @@
+sudo pipenv install --verbose --python /usr/bin/python3.12
