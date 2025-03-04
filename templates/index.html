@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Push Notification Demo (Flask)</h1>
+    <button onclick="subscribe()">Subscribe to Notifications</button>
+    <button onclick="sendNotification()">Send Test Notification</button>
+    <script>
+    const VAPID_PUBLIC_KEY = "{{ vapid_public_key }}";
+
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+            console.log('Service Worker Registered');
+        });
+    }
+
+    function subscribe() {
+        navigator.serviceWorker.ready.then(function(reg) {
+            reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+            }).then(function(subscription) {
+                fetch('/subscribe', {
+                    method: 'POST',
+                    body: JSON.stringify(subscription),
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(response => response.json()).then(data => {
+                    alert(data.message);
+                });
+            });
+        });
+    }
+
+    function sendNotification() {
+        fetch('/send_notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => response.json()).then(data => {
+            if (data.error) {
+                alert('Error: ' + data.error);
+            } else {
+                alert(data.message);
+            }
+        });
+    }
+
+    function urlBase64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+        for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    }
+    </script>
+</body>
+</html>
