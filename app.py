@@ -7,14 +7,14 @@ import os
 app = Flask(__name__)
 
 # Generate VAPID keys (run once, then hardcode them)
-vapid = Vapid()
-vapid.generate_keys()
-VAPID_PRIVATE_KEY = vapid.private_pem().decode()
-VAPID_PUBLIC_KEY = vapid.public_pem().decode()
+# vapid = Vapid()
+# vapid.generate_keys()
+# VAPID_PRIVATE_KEY = vapid.private_pem().decode()
+# VAPID_PUBLIC_KEY = vapid.public_pem().decode()
 
 # Hardcode these after generating (replace placeholders)
-# VAPID_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE"
-# VAPID_PRIVATE_KEY = "YOUR_PRIVATE_KEY_HERE"
+VAPID_PUBLIC_KEY = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAExiMZoqcjIFPe9dM6BMrOUp/VTwiPs7sCT6legmKHgcJ2q9lakXI29Gtt52DsaIA1laGGJrPf9pWbpjfN6tJAPw=="
+VAPID_PRIVATE_KEY = "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgvz5lgO5EwvyR+fNIkmewXCnvihsolGMAMYvtJOHuOHyhRANCAATGIxmipyMgU9710zoEys5Sn9VPCI+zuwJPqV6CYoeBwnar2VqRcjb0a23nYOxogDWVoYYms9/2lZumN83q0kA/"
 
 # Store subscriptions (in-memory for demo; use a database in production)
 subscriptions = []
